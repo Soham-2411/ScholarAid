@@ -2,6 +2,11 @@ import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:scholar_aid/Pages/ArtiIntel.dart';
+import 'package:scholar_aid/Pages/Comm.dart';
+import 'package:scholar_aid/Pages/Profile.dart';
+
+import 'AR.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -27,14 +32,15 @@ class _NavBarState extends State<NavBar> {
                 painter: CurvePainter(),
               ),
               Container(
-                width: width,
-                height: height,
-                child: Container(
-                  child: Center(
-                    child: Text(index.toString()),
-                  ),
-                ),
-              )
+                  width: width,
+                  height: height,
+                  child: (index == 0)
+                      ? ARModels()
+                      : (index == 1)
+                          ? AI()
+                          : (index == 2)
+                              ? Communication()
+                              : ProfilePage())
             ],
           ),
         ),
