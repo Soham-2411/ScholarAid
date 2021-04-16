@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:page_transition/page_transition.dart';
+import 'Pages/Navbar.dart';
 import 'authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,18 +35,18 @@ class Splash extends StatelessWidget {
     Timer(Duration(seconds: 3), () {
       if (email == '') {
         Navigator.pushReplacement(
-          context,
-          PageTransition(
-              child: Authentication(),
-              type: PageTransitionType.fade,
-              duration: Duration(milliseconds: 625)));
+            context,
+            PageTransition(
+                child: Authentication(),
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 625)));
       } else {
         Navigator.pushReplacement(
-          context,
-          PageTransition(
-              child: LoggedInWidget(),
-              type: PageTransitionType.fade,
-              duration: Duration(milliseconds: 625)));
+            context,
+            PageTransition(
+                child: NavBar(),
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 625)));
       }
     });
 
@@ -58,13 +59,12 @@ class Splash extends StatelessWidget {
             Text(
               'ScholarAid',
               style: TextStyle(
-                color: Colors.white,
+                  color: Colors.white,
                   fontSize: w / 10,
-                fontWeight: FontWeight.bold
-              ),
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: h/4,
+              height: h / 4,
             ),
             Image.asset('assets/loading.gif'),
             Text(
@@ -72,16 +72,14 @@ class Splash extends StatelessWidget {
               style: TextStyle(
                   color: Color(0xffdbddfa),
                   fontSize: w / 32.7272,
-                  fontWeight: FontWeight.bold
-              ),
+                  fontWeight: FontWeight.bold),
             ),
             Text(
               'Presents',
               style: TextStyle(
                   color: Color(0xffdbddfa),
                   fontSize: w / 32.7272,
-                  fontWeight: FontWeight.bold
-              ),
+                  fontWeight: FontWeight.bold),
             )
           ],
         ),
@@ -89,4 +87,3 @@ class Splash extends StatelessWidget {
     );
   }
 }
-

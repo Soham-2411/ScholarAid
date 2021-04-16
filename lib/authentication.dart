@@ -7,6 +7,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:scholar_aid/Pages/Navbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'main.dart';
 
@@ -19,8 +20,8 @@ class Authentication extends StatefulWidget {
 }
 
 class _AuthenticationState extends State<Authentication> {
-
-  CollectionReference userRefrence = FirebaseFirestore.instance.collection('Users');
+  CollectionReference userRefrence =
+      FirebaseFirestore.instance.collection('Users');
   String password = '';
   Duration get loginTime => Duration(milliseconds: timeDilation.ceil() * 2250);
   Future<String> _loginUser(LoginData data) {
@@ -28,6 +29,7 @@ class _AuthenticationState extends State<Authentication> {
       return null;
     });
   }
+
   Future<String> _recoverPassword(String name) {
     return Future.delayed(loginTime).then((_) {
       return null;
@@ -92,10 +94,8 @@ class _AuthenticationState extends State<Authentication> {
                       //  CircleAvtarImage=link.toString();
                       prefs.setString('sa_email', email);
                       main();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoggedInWidget()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => NavBar()));
                     } else {
                       print('unsucsessful');
                     }
@@ -119,8 +119,10 @@ class _AuthenticationState extends State<Authentication> {
                       })
                       .then((value) => print('user Added'))
                       .catchError((error) => print('Failed to add'));
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Authentication()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Authentication()));
                 } catch (e) {
                   print(e);
                 }
@@ -144,8 +146,7 @@ class _AuthenticationState extends State<Authentication> {
                         fontSize: 36,
                         fontFamily: 'Fredoka One',
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 4
-                    ),
+                        letterSpacing: 4),
                   ),
                   Text(
                     "Forks !!!",
@@ -154,56 +155,11 @@ class _AuthenticationState extends State<Authentication> {
                         fontSize: 36,
                         fontFamily: 'Fredoka One',
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 4
-                    ),
+                        letterSpacing: 4),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class LoggedInWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      body: Container(
-        alignment: Alignment.center,
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Logged In',
-              style: TextStyle(color: Colors.black),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Email: ' + email,
-              style: TextStyle(color: Colors.black),
-            ),
-            SizedBox(height: 8),
-            Text(
-              '👉👌',
-              style: TextStyle(color: Colors.black, fontSize: 64),
-            ),
-            SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () async {
-                FirebaseAuth.instance.signOut();
-                final prefs = await SharedPreferences.getInstance();
-                prefs.remove('sa_email');
-                main();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Authentication()));
-              },
-              child: Text('Logout'),
-            )
           ],
         ),
       ),
