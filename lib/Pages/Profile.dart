@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:scholar_aid/authentication.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../main.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -49,6 +53,26 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         ),
+        SizedBox(height: 20),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: ElevatedButton(
+            onPressed: () async {
+              FirebaseAuth.instance.signOut();
+              final prefs = await SharedPreferences.getInstance();
+              prefs.remove('sa_email');
+              main();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Authentication()));
+            },
+            style: ElevatedButton.styleFrom(
+                padding:
+                    EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
+                elevation: 10,
+                primary: HexColor('#1A1125')),
+            child: Text("Logout"),
+          ),
+        )
       ],
     );
   }

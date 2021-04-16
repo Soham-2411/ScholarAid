@@ -97,7 +97,7 @@ class _AuthenticationState extends State<Authentication> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => NavBar()));
                     } else {
-                      print('unsucsessful');
+                      print('unsuccessful');
                     }
                   });
                 } catch (e) {
@@ -149,7 +149,7 @@ class _AuthenticationState extends State<Authentication> {
                         letterSpacing: 4),
                   ),
                   Text(
-                    "Forks !!!",
+                    "Folks !!!",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 36,
