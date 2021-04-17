@@ -31,7 +31,7 @@ class TutorsListState extends State<TutorsList> {
       new TutorCards(
           name: 'Selvinpaulpeter J',
           subject: 'Chemistry',
-          email: 'selvinpaulpeter@srmist.edu.in',
+          email: 'selvinp@srmist.edu.in',
           hourlyrate: 'Rs 500/hr',
           phoneno: '951668165488'),
       new TutorCards(
@@ -75,8 +75,10 @@ class TutorsListState extends State<TutorsList> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => IndexPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => IndexPage()));
                         },
                         icon: Icon(
                           FlutterIcons.video_call_mdi,
@@ -144,7 +146,6 @@ class TutorCards extends StatefulWidget {
 }
 
 class TutorCardsState extends State<TutorCards> {
-
   Razorpay _razorpay;
 
   @override
