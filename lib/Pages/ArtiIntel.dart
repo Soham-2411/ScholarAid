@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
 import 'package:http/http.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class AI extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class _AIState extends State<AI> {
   var answers = [];
 
   generateSummary(String doc) async {
+    EasyLoading.show(status: 'loading...');
     var url = 'http://localhost:7000/?' + 'passage=' + doc;
 
     try {
@@ -31,10 +33,15 @@ class _AIState extends State<AI> {
         summary = document.getElementsByTagName('h1')[0].innerHtml;
       });
       print(summary);
+      setState(() {
+        status = 'sum';
+      });
     } catch (e) {}
+    EasyLoading.dismiss();
   }
 
   generateQuestions(String doc) async {
+    EasyLoading.show(status: 'loading...');
     var url = 'http://localhost:5000/?' + 'text=' + doc;
 
     try {
@@ -53,7 +60,11 @@ class _AIState extends State<AI> {
       });
       print(questions);
       print(correct);
+      setState(() {
+        status = 'test';
+      });
     } catch (e) {}
+    EasyLoading.dismiss();
   }
 
   @override
@@ -164,10 +175,7 @@ class _AIState extends State<AI> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  setState(() {
-                                    generateSummary(para);
-                                    status = 'sum';
-                                  });
+                                  generateSummary(para);
                                 },
                               ),
                               SizedBox(height: 8),
@@ -183,9 +191,6 @@ class _AIState extends State<AI> {
                                 ),
                                 onPressed: () {
                                   generateQuestions(para);
-                                  setState(() {
-                                    status = 'test';
-                                  });
                                 },
                               ),
                             ],

@@ -5,6 +5,7 @@ import 'authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,13 +16,19 @@ Future main() async {
   runApp(ScholarAid());
 }
 
-class ScholarAid extends StatelessWidget {
+class ScholarAid extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _ScholarAidState createState() => _ScholarAidState();
+}
+
+class _ScholarAidState extends State<ScholarAid> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Splash(),
       debugShowCheckedModeBanner: false,
+      builder: EasyLoading.init(),
     );
   }
 }
