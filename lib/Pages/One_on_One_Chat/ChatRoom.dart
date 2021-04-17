@@ -1,3 +1,5 @@
+import 'package:hexcolor/hexcolor.dart';
+
 import '../../authentication.dart';
 import 'constants.dart';
 import 'database1.dart';
@@ -66,27 +68,30 @@ class _ChatRoomState extends State<ChatRoom> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Center(child: Text('Chatapp')),
-        backgroundColor: Colors.blue,
-        elevation: 0.0,
-        centerTitle: true,
+        backgroundColor: Colors.transparent,
         actions: [
-          GestureDetector(
-            onTap: () {
-              //AuthService().signOut();
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Search()));
             },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Icon(Icons.search)),
-            ),
-          ),
+          )
         ],
+        elevation: 0,
+        title: Text(
+          "Chat",
+          style: TextStyle(
+              fontSize: width * 0.1,
+              color: Colors.white,
+              fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         child: chatRoomsList(),
@@ -103,50 +108,71 @@ class ChatRoomsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Chat(
-                      chatRoomId: chatRoomId,
-                    )));
-      },
-      child: Card(
-        elevation: 8,
-        child: Container(
-          color: Colors.white,
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-          child: Row(
-            children: [
-              Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Center(
-                  child: Text(userName.substring(0, 1),
-                      textAlign: TextAlign.center,
+    return Padding(
+      padding: EdgeInsets.only(left: 20, right: 20),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            elevation: 10,
+            padding: EdgeInsets.all(0),
+            primary: HexColor('#261D32'),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15)))),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Chat(
+                        chatRoomId: chatRoomId,
+                      )));
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: 80,
+              color: Colors.transparent,
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+              child: Row(
+                children: [
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: HexColor('#5B04BC'),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Center(
+                      child: Text(userName.substring(0, 1),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300)),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Text(userName,
+                      textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontFamily: 'OverpassRegular',
-                          fontWeight: FontWeight.w300)),
+                          fontWeight: FontWeight.w400))
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: Colors.grey[500],
                 ),
               ),
-              SizedBox(
-                width: 12,
-              ),
-              Text(userName,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: 'OverpassRegular',
-                      fontWeight: FontWeight.w300))
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

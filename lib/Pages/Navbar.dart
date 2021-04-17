@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:scholar_aid/Pages/ArtiIntel.dart';
-import 'package:scholar_aid/Pages/ChatPage.dart';
 import 'package:scholar_aid/Pages/Comm.dart';
 import 'package:scholar_aid/Pages/One_on_One_Chat/ChatRoom.dart';
 import 'package:scholar_aid/Pages/Profile.dart';
@@ -15,7 +14,7 @@ class NavBar extends StatefulWidget {
   _NavBarState createState() => _NavBarState();
 }
 
-int index;
+int index = 0;
 
 class _NavBarState extends State<NavBar> {
   final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
