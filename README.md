@@ -13,7 +13,7 @@
 Eeshan Dutta
 
 <p align="center">
-<img src = "https://avatars.githubusercontent.com/u/53020601?v=4"  height="100" alt="Your Name Here (Insert Your Image Link In Src">
+<img src = "https://avatars.githubusercontent.com/u/53020601?v=4"  height="120" alt="Your Name Here (Insert Your Image Link In Src">
 </p>
 <p align="center">
 <a href = "https://github.com/EeshanDutta007"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
@@ -24,11 +24,11 @@ Eeshan Dutta
 </td>
 
 <td>
-
+<td>
 Parth Srivastava 
 
 <p align="center">
-<img src = "https://avatars.githubusercontent.com/u/60739970?v=4"  height="100" alt="Your Name Here (Insert Your Image Link In Src">
+<img src = "https://avatars.githubusercontent.com/u/60739970?v=4"  height="120" alt="Your Name Here (Insert Your Image Link In Src">
 </p>
 <p align="center">
 <a href = "https://github.com/savss624"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
@@ -45,7 +45,7 @@ Parth Srivastava
 Soham Sakaria
 
 <p align="center">
-<img src = "https://avatars.githubusercontent.com/u/52789205?v=4"  height="100" alt="Your Name Here (Insert Your Image Link In Src">
+<img src = "https://avatars.githubusercontent.com/u/52789205?v=4"  height="120" alt="Your Name Here (Insert Your Image Link In Src">
 </p>
 <p align="center">
 <a href = "https://github.com/soham-2411"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
@@ -63,7 +63,7 @@ Soham Sakaria
 Parth Pandey
 
 <p align="center">
-<img src = "https://avatars.githubusercontent.com/u/55892170?v=4"  height="100" alt="Your Name Here (Insert Your Image Link In Src">
+<img src = "https://avatars.githubusercontent.com/u/55892170?v=4"  height="120" alt="Your Name Here (Insert Your Image Link In Src">
 </p>
 <p align="center">
 <a href = "https://github.com/ParthPandey2236"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
@@ -80,7 +80,7 @@ Parth Pandey
 Shresth Kapoor
 
 <p align="center">
-<img src = "https://avatars.githubusercontent.com/u/73338689?v=4"  height="100" alt="Your Name Here (Insert Your Image Link In Src">
+<img src = "https://avatars.githubusercontent.com/u/73338689?v=4"  height="120" alt="Your Name Here (Insert Your Image Link In Src">
 </p>
 <p align="center">
 <a href = "https://github.com/shresthkapoor7"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36"/></a>
