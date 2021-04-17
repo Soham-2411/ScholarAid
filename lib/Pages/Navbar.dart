@@ -8,6 +8,7 @@ import 'package:scholar_aid/Pages/One_on_One_Chat/ChatRoom.dart';
 import 'package:scholar_aid/Pages/Profile.dart';
 
 import 'AR.dart';
+import 'ChatPage.dart';
 
 class NavBar extends StatefulWidget {
   @override

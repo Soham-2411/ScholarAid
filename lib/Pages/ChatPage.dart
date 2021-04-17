@@ -83,7 +83,7 @@ class TutorsListState extends State<TutorsList> {
                 // }
                 print(tutorCards);
                 return Container(
-                  width: 200,
+                  width: MediaQuery.of(context).size.width-20,
                   height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: [
@@ -121,31 +121,44 @@ class TutorCardsState extends State<TutorCards> {
         elevation: 8,
         child: Container(
           height: 150,
-          width: 200,
+          width: MediaQuery.of(context).size.width-20,
           padding: EdgeInsets.only(left: 5, top: 5),
 
-            child: Column(
-              children: [
-                Flexible(
-                  child: Text('Name :'+widget.name,
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
-                ),
-                Flexible(child: Text('Email :'+widget.email,
-                    style: TextStyle(color: Colors.black, fontSize: 16))),
-                Flexible(
-                  child: Text('PhoneNo : '+widget.phoneno,
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
-                ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Name :'+widget.name,
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Email :'+widget.email,
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('PhoneNo : '+widget.phoneno,
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                  ),
 
-                Flexible(child: Text('Subject :'+widget.subject,
-                    style: TextStyle(color: Colors.black, fontSize: 16))),
-                Flexible(
-                  child: Text('Hourly Rate :'+widget.hourlyrate,
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
-                ),
-                IconButton(icon: Icon(Icons.payment), onPressed: (){})
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Subject :'+widget.subject,
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Hourly Rate :'+widget.hourlyrate,
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                  ),
+                  TextButton(onPressed: (){}, child: Text('Pay'))
 
-              ],
+                ],
+              ),
             ),
 
         ));
