@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:scholar_aid/src/pages/index.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'One_on_One_Chat/ChatRoom.dart';
 
@@ -74,7 +75,8 @@ class TutorsListState extends State<TutorsList> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // VIDEO CALL
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => IndexPage()));
                         },
                         icon: Icon(
                           FlutterIcons.video_call_mdi,
