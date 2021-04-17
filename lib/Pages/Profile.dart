@@ -163,6 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void initState() {
     super.initState();
+    setImage();
     getData();
   }
 
