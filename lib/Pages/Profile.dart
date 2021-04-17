@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,6 +11,7 @@ import 'package:scholar_aid/authentication.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as path;
+import 'package:scholar_aid/main.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -171,11 +174,33 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Column(
         children: [
           Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: EdgeInsets.only(right: 20, top: 10),
+                child: IconButton(
+                  icon: Icon(
+                    FlutterIcons.logout_ant,
+                    color: Colors.white,
+                  ),
+                  onPressed: () async {
+                    FirebaseAuth.instance.signOut();
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.remove('stud_bud_email');
+                    prefs.remove('student_tutor');
+                    main();
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Authentication()));
+                  },
+                ),
+              )),
+          Align(
             alignment: Alignment.center,
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: height * 0.11),
+                  padding: EdgeInsets.only(top: height * 0.08),
                   child: TextButton(
                     onPressed: displayBottomSheet,
                     style: TextButton.styleFrom(
@@ -262,6 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );
