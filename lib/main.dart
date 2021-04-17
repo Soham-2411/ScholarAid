@@ -16,13 +16,8 @@ Future main() async {
   runApp(ScholarAid());
 }
 
-class ScholarAid extends StatefulWidget {
+class ScholarAid extends StatelessWidget {
   // This widget is the root of your application.
-  @override
-  _ScholarAidState createState() => _ScholarAidState();
-}
-
-class _ScholarAidState extends State<ScholarAid> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +28,12 @@ class _ScholarAidState extends State<ScholarAid> {
   }
 }
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
+  @override
+  _SplashState createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
