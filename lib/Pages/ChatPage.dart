@@ -152,7 +152,7 @@ class TutorCardsState extends State<TutorCards> {
         elevation: 8,
         child: Container(
           width: MediaQuery.of(context).size.width - 20,
-          padding: EdgeInsets.only(left: 5, top: 5, bottom: 20),
+          padding: EdgeInsets.only(left: 5, top: 5, bottom: 0),
           child: Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -197,23 +197,21 @@ class TutorCardsState extends State<TutorCards> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.email,
-                                size: width * 0.045,
-                                color: Colors.grey[300],
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(widget.email,
-                                  style: TextStyle(
-                                      color: Colors.grey[300],
-                                      fontSize: width * 0.035,
-                                      fontWeight: FontWeight.w500)),
-                            ],
-                          ),
+                          Row(children: [
+                            Icon(
+                              Icons.email,
+                              size: width * 0.045,
+                              color: Colors.grey[300],
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(widget.email,
+                                style: TextStyle(
+                                    color: Colors.grey[300],
+                                    fontSize: width * 0.035,
+                                    fontWeight: FontWeight.w500)),
+                          ]),
                           Text(widget.phoneno,
                               style: TextStyle(
                                   color: Colors.grey[300],
@@ -221,6 +219,17 @@ class TutorCardsState extends State<TutorCards> {
                                   fontWeight: FontWeight.w500)),
                         ],
                       )),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Pay",
+                      style: TextStyle(
+                          fontSize: width * 0.04, color: Colors.white),
+                    ),
+                  )
                 ],
               ),
             ),
