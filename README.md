@@ -3,7 +3,12 @@
 
 ### Hackofiesta submission by team Ctrl Alt Elite - Education Track
 
-<img src = "icon.jpeg" height=300>
+[![Watch the video](icon.jpeg)](https://www.youtube.com/watch?v=9loOwzPN2C4)
+
+**(Click the image above to see the video link of the App)**
+
+**Powerpoint Presentation -** [[click here]](https://drive.google.com/file/d/1xp7tJcgKKNbjnoET9ZI3p6PuKhLcbxM4/view)
+
 
 In these recent times (due the COVID 19), the whole system of education has been affected . With this new concept of ‘Online’ education which we are witnessing for the very first time, there’s bound to be challenges for both Students and Teachers. But now that online education has a vivid part of the system, it not’s going away anytime soon and so the solutions to the challenges of online education are of immense urgency. So, here we are presenting 'ScholarAid' for the rescue.
 
