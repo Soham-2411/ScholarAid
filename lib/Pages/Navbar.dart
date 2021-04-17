@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:scholar_aid/Pages/ArtiIntel.dart';
 import 'package:scholar_aid/Pages/ChatPage.dart';
 import 'package:scholar_aid/Pages/Comm.dart';
+import 'package:scholar_aid/Pages/One_on_One_Chat/ChatRoom.dart';
 import 'package:scholar_aid/Pages/Profile.dart';
 
 import 'AR.dart';
@@ -42,7 +43,7 @@ class _NavBarState extends State<NavBar> {
                           : (index == 2)
                               ? CommSelectScreen()
                               : (index == 3)
-                                  ? Chatpage()
+                                  ? ChatRoom()
                                   : ProfilePage())
             ],
           ),
