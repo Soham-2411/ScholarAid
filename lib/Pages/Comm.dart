@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:all_sensors/all_sensors.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_otp/flutter_otp.dart';
+import 'package:scholar_aid/Pages/Profile.dart';
 
 import '../main.dart';
 
@@ -40,17 +43,27 @@ class PhoneUsed extends StatefulWidget {
 
 class _PhoneUsedState extends State<PhoneUsed> {
   String CurrentDate = 'today';
+
   @override
   void initState() {
     // TODO: implement initState
-    prefs.setInt(s, 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y);
-    y = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y;
+    prefs.setInt(
+        s,
+        60 * DateTime.now().hour.toInt() +
+            DateTime.now().minute.toInt() -
+            x +
+            y);
+    y = 60 * DateTime.now().hour.toInt() +
+        DateTime.now().minute.toInt() -
+        x +
+        y;
     x = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt();
     setState(() {
-      _appTime=prefs.getInt(s);
+      _appTime = prefs.getInt(s);
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -125,9 +138,18 @@ class _PhoneUsedState extends State<PhoneUsed> {
                             color: Colors.white,
                           ),
                           onPressed: () async {
-                            prefs.setInt(s, 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y);
-                            y = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y;
-                            x = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt();
+                            prefs.setInt(
+                                s,
+                                60 * DateTime.now().hour.toInt() +
+                                    DateTime.now().minute.toInt() -
+                                    x +
+                                    y);
+                            y = 60 * DateTime.now().hour.toInt() +
+                                DateTime.now().minute.toInt() -
+                                x +
+                                y;
+                            x = 60 * DateTime.now().hour.toInt() +
+                                DateTime.now().minute.toInt();
                             //
                             print(y);
                             final DateTime picked = await showDatePicker(
@@ -142,8 +164,17 @@ class _PhoneUsedState extends State<PhoneUsed> {
                                   '-' +
                                   picked.day.toString());
                               setState(() {
-                                _appTime = prefs.getInt(picked.year.toString() + '-' + picked.month.toString() + '-' + picked.day.toString())??0;
-                                CurrentDate = picked.day.toString()+'-' + picked.month.toString()+'-'+picked.year.toString();
+                                _appTime = prefs.getInt(picked.year.toString() +
+                                        '-' +
+                                        picked.month.toString() +
+                                        '-' +
+                                        picked.day.toString()) ??
+                                    0;
+                                CurrentDate = picked.day.toString() +
+                                    '-' +
+                                    picked.month.toString() +
+                                    '-' +
+                                    picked.year.toString();
                               });
                             }
                           },
@@ -211,6 +242,8 @@ class _CommunicationState extends State<Communication> {
     }));
   }
 
+  FlutterOtp otp = FlutterOtp();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -257,7 +290,7 @@ class _CommunicationState extends State<Communication> {
                 fontWeight: FontWeight.bold),
 
             // Format for the Countdown Text.
-            textFormat: CountdownTextFormat.S,
+            textFormat: CountdownTextFormat.HH_MM_SS,
 
             // Handles Countdown Timer (true for Reverse Countdown (max to 0), false for Forward Countdown (0 to max)).
             isReverse: false,
@@ -348,7 +381,15 @@ class _CommunicationState extends State<Communication> {
                           "End Session",
                           style: TextStyle(fontSize: width * 0.045),
                         ))),
-                    onPressed: () => _controller.restart(duration: _duration))
+                    onPressed: () {
+                      print(_controller.getTime());
+                      String time = _controller.getTime();
+                       otp.sendOtp('${teacherNumber}', 'Your student has not used the phone and studied for $time since the start of the session.', 1000,
+                           6000, "+91");
+                       otp.sendOtp('${parentNumber}', 'Your child has not used the phone and studied for $time since the start of the session.', 1000,
+                           6000, "+91");
+                      _controller.restart(duration: _duration);
+                    })
               ],
             ),
           ),
@@ -397,3 +438,4 @@ class _CommunicationState extends State<Communication> {
     );
   }
 }
+
