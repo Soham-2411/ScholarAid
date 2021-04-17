@@ -4,6 +4,154 @@ import 'package:flutter/material.dart';
 import 'package:all_sensors/all_sensors.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+class CommSelectScreen extends StatefulWidget {
+  @override
+  _CommSelectScreenState createState() => _CommSelectScreenState();
+}
+
+int page = 0;
+final controller = PageController(initialPage: page, keepPage: false);
+
+class _CommSelectScreenState extends State<CommSelectScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: PageView(
+        controller: controller,
+        children: [
+          PhoneUsed(),
+          Communication(),
+        ],
+      ),
+    );
+  }
+}
+
+// INTEGER TO DISPLAY TIME
+int _appTime = 69;
+
+// WIDGET TO DISPLAY APP TIME
+class PhoneUsed extends StatefulWidget {
+  @override
+  _PhoneUsedState createState() => _PhoneUsedState();
+}
+
+class _PhoneUsedState extends State<PhoneUsed> {
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return Container(
+      child: Column(
+        children: [
+          SizedBox(height: height * 0.1),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                elevation: 10,
+                primary: HexColor("#261D32"),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)))),
+            child: Container(
+                height: 80,
+                width: width - 80,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "Flip and Focus",
+                      style: TextStyle(
+                        fontSize: width * 0.05,
+                      ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: Colors.white.withAlpha(50),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+            onPressed: () {
+              controller.animateToPage(1,
+                  duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+            },
+          ),
+          SizedBox(height: 50),
+          Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            elevation: 20,
+            color: HexColor('#261D32'),
+            child: Container(
+              width: width - 50,
+              height: height * 0.25,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'App Used',
+                          style: TextStyle(
+                              fontSize: width * 0.05,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.calendar_today_outlined,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            // CODE TO SELECT DATE ON WHICH PHONE WAS USED
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: "App use for today: \n\n",
+                              style: TextStyle(
+                                  fontSize: width * 0.06,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white)),
+                          TextSpan(
+                              text: _appTime.toString() + ' Mins',
+                              style: TextStyle(
+                                  fontSize: width * 0.04,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white))
+                        ]),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class Communication extends StatefulWidget {
   @override
   _CommunicationState createState() => _CommunicationState();
@@ -169,6 +317,46 @@ class _CommunicationState extends State<Communication> {
                     onPressed: () => _controller.restart(duration: _duration))
               ],
             ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                elevation: 10,
+                primary: HexColor("#261D32"),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)))),
+            child: Container(
+                height: 80,
+                width: width - 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "Phone Used",
+                      style: TextStyle(
+                        fontSize: width * 0.05,
+                      ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.arrow_back_ios_outlined,
+                          color: Colors.white.withAlpha(50),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+            onPressed: () {
+              controller.animateToPage(0,
+                  duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+            },
           ),
         ],
       )),

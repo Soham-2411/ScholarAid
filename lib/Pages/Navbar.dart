@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:scholar_aid/Pages/ArtiIntel.dart';
+import 'package:scholar_aid/Pages/ChatPage.dart';
 import 'package:scholar_aid/Pages/Comm.dart';
 import 'package:scholar_aid/Pages/Profile.dart';
 
@@ -39,8 +40,10 @@ class _NavBarState extends State<NavBar> {
                       : (index == 1)
                           ? AI()
                           : (index == 2)
-                              ? Communication()
-                              : ProfilePage())
+                              ? CommSelectScreen()
+                              : (index == 3)
+                                  ? Chatpage()
+                                  : ProfilePage())
             ],
           ),
         ),
@@ -122,13 +125,31 @@ class _NavBarState extends State<NavBar> {
                   padding: EdgeInsets.all(18),
                   shape: CircleBorder()),
               child: Icon(
-                Icons.person,
+                Icons.chat,
                 color: Colors.white,
                 size: MediaQuery.of(context).size.height * 0.03,
               ),
               onPressed: () {
                 setState(() {
                   index = 3;
+                });
+                if (fabKey.currentState.isOpen) {
+                  fabKey.currentState.close();
+                }
+              }),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  primary: HexColor('#5B04BC'),
+                  padding: EdgeInsets.all(18),
+                  shape: CircleBorder()),
+              child: Icon(
+                Icons.person,
+                color: Colors.white,
+                size: MediaQuery.of(context).size.height * 0.03,
+              ),
+              onPressed: () {
+                setState(() {
+                  index = 4;
                 });
                 if (fabKey.currentState.isOpen) {
                   fabKey.currentState.close();
