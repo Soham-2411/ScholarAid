@@ -12,6 +12,11 @@ ScholarAid aims to provide a very different approach to online studying. It will
 ## Features:
 
 ### ParaQueries (AI algorithm)
+<p float="left">
+<img src = "assets/Images/Sum_Q.jpg" height=300>
+<img src = "Ar2.jpg" height=300>
+<img src = "AR3.jpg" height=300>
+</p>
 
 Ever opened huge ppts and pdfs right before the exam and are clueless what and where to study from. We have got you sorted.
 Presenting our first feature 'ParaQueries'.
