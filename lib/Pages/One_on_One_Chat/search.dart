@@ -92,11 +92,11 @@ class _SearchState extends State<Search> {
             children: [
               Text(
                 userName,
-                style: TextStyle(color: Colors.blue, fontSize: 16),
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
               Text(
                 userEmail,
-                style: TextStyle(color: Colors.blue, fontSize: 16),
+                style: TextStyle(color: Colors.white, fontSize: 16),
               )
             ],
           ),
@@ -108,7 +108,8 @@ class _SearchState extends State<Search> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(24)),
+                  color: HexColor('#5B04BC'),
+                  borderRadius: BorderRadius.circular(24)),
               child: Text(
                 "Message",
                 style: TextStyle(color: Colors.white, fontSize: 16),
@@ -137,6 +138,7 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor('#1A1125'),
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_sharp),
@@ -145,7 +147,8 @@ class _SearchState extends State<Search> {
           },
         ),
         title: Text('Chatroom'),
-        backgroundColor: Colors.blue,
+        centerTitle: true,
+        backgroundColor: HexColor('#5B04BC'),
       ),
       body: isLoading
           ? Container(
@@ -158,7 +161,7 @@ class _SearchState extends State<Search> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    color: Colors.blue,
+                    color: HexColor('#5B04BC'),
                     child: Row(
                       children: [
                         Expanded(
@@ -174,28 +177,15 @@ class _SearchState extends State<Search> {
                                 border: InputBorder.none),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             initiateSearch();
                           },
-                          child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      colors: [
-                                        const Color(0x36FFFFFF),
-                                        const Color(0x0FFFFFFF)
-                                      ],
-                                      begin: FractionalOffset.topLeft,
-                                      end: FractionalOffset.bottomRight),
-                                  borderRadius: BorderRadius.circular(40)),
-                              padding: EdgeInsets.all(12),
-                              child: Center(
-                                  child: Icon(
-                                Icons.search,
-                                color: Colors.white,
-                              ))),
+                          icon: Center(
+                              child: Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          )),
                         )
                       ],
                     ),

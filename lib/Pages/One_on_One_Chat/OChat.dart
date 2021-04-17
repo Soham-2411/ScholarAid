@@ -1,3 +1,5 @@
+import 'package:hexcolor/hexcolor.dart';
+
 import 'constants.dart';
 import 'database1.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -67,6 +69,7 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      backgroundColor: HexColor('#1A1125'),
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_sharp),
@@ -74,8 +77,9 @@ class _ChatState extends State<Chat> {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.blue,
-        title: Text('ChatApp'),
+        centerTitle: true,
+        backgroundColor: HexColor('#5B04BC'),
+        title: Text('Chat'),
       ),
       body: Container(
         child: Stack(
@@ -87,7 +91,7 @@ class _ChatState extends State<Chat> {
               child: Container(
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(color: Colors.blue, width: 2.0),
+                    top: BorderSide(color: HexColor('#5B04BC'), width: 2.0),
                   ),
                 ),
                 padding: EdgeInsets.symmetric(vertical: 4),
@@ -97,12 +101,13 @@ class _ChatState extends State<Chat> {
                         child: TextField(
                       controller: messageEditingController,
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 20.0),
                         hintText: 'Type your message here...',
+                        hintStyle: TextStyle(color: Colors.white),
                         border: InputBorder.none,
                       ),
                     )),
@@ -120,7 +125,10 @@ class _ChatState extends State<Chat> {
                             width: 40,
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                    colors: [Colors.blue, Colors.blue],
+                                    colors: [
+                                      HexColor('#5B04BC'),
+                                      HexColor('#5B04BC')
+                                    ],
                                     begin: FractionalOffset.topLeft,
                                     end: FractionalOffset.bottomRight),
                                 borderRadius: BorderRadius.circular(40)),
@@ -175,12 +183,12 @@ class MessageTile extends StatelessWidget {
                     topRight: Radius.circular(30.0),
                   ),
             elevation: 5.0,
-            color: sendByMe ? Colors.blue : Colors.white,
+            color: sendByMe ? HexColor('#5B04BC') : HexColor('#121212'),
             child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 child: Text(message,
                     style: TextStyle(
-                      color: sendByMe ? Colors.white : Colors.blue,
+                      color: sendByMe ? Colors.white : Colors.black,
                       fontSize: 15.0,
                     ))),
           ),
