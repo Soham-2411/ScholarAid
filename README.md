@@ -11,9 +11,9 @@ ScholarAid aims to provide a very different approach to online studying. It will
 
 ## Features:
 
-### Paraqueries (AI algorithm)
+### ParaQueries (AI algorithm)
 
-Ever opened huge ppts and pdfs right right before the exam and are clueless what and where to study from. We have got yoy sorted.
+Ever opened huge ppts and pdfs right before the exam and are clueless what and where to study from. We have got you sorted.
 Presenting our first feature 'ParaQueries'.
 
 It is personalised Artificial Intelligence algorithm which will 
