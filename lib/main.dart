@@ -64,7 +64,17 @@ class Splash extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: h / 4,
+              height: h / 10,
+            ),
+            Text(
+              'Hackofiesta 2021 Submission',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: w / 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: h / 6,
             ),
             Image.asset('assets/loading.gif'),
             Text(
