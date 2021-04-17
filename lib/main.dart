@@ -6,15 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 SharedPreferences prefs;
-int x,y,Timeduration;
+int x, y, Timeduration;
 String s = "";
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  prefs = await SharedPreferences.getInstance();
-  email = prefs.getString('sa_email');
-  if (email == null) email = '';
+  try {
+    prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('sa_email');
+    if (email == null) email = '';
+  } catch (e) {}
   runApp(ScholarAid());
 }
 
@@ -35,21 +38,30 @@ class Splash extends StatefulWidget {
   _SplashState createState() => _SplashState();
 }
 
-class _SplashState extends State<Splash> with WidgetsBindingObserver{
-
+class _SplashState extends State<Splash> with WidgetsBindingObserver {
   @override
+  void initPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
   void initState() {
     // TODO: implement initState
+    initPrefs();
     print(DateTime.now());
-    s = DateTime.now().year.toString()+'-'+DateTime.now().month.toString()+'-'+DateTime.now().day.toString();
-    y= prefs.getInt(s)??0;
+    s = DateTime.now().year.toString() +
+        '-' +
+        DateTime.now().month.toString() +
+        '-' +
+        DateTime.now().day.toString();
+    y = prefs.getInt(s) ?? 0;
     print(y);
-    x=60*DateTime.now().hour.toInt()+DateTime.now().minute.toInt();
+    x = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt();
     print(s);
     print(x);
     WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -57,14 +69,24 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver{
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // TODO: implement didChangeDependencies
 
-    if(state==AppLifecycleState.paused||state==AppLifecycleState.inactive){
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
       //print('paused');
-      prefs.setInt(s, 60*DateTime.now().hour.toInt()+DateTime.now().minute.toInt()-x+y);
-      print(60*DateTime.now().hour.toInt()+DateTime.now().minute.toInt()-x+y);
+      prefs.setInt(
+          s,
+          60 * DateTime.now().hour.toInt() +
+              DateTime.now().minute.toInt() -
+              x +
+              y);
+      print(60 * DateTime.now().hour.toInt() +
+          DateTime.now().minute.toInt() -
+          x +
+          y);
     }
     // else if(state==AppLifecycleState.inactive){
     //   print('inactive');
@@ -72,6 +94,7 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver{
 
     super.didChangeAppLifecycleState(state);
   }
+
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;

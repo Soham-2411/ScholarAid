@@ -1,6 +1,7 @@
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../authentication.dart';
+import '../Navbar.dart';
 import 'constants.dart';
 import 'database1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,20 +24,22 @@ class _ChatRoomState extends State<ChatRoom> {
       stream: chatRooms,
       builder: (context, snapshot) {
         return snapshot.hasData
-            ? ListView.builder(
-                itemCount: snapshot.data.documents.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return ChatRoomsTile(
-                    userName: snapshot.data.documents[index]
-                        .data()['chatRoomId']
-                        .toString()
-                        .replaceAll("_", "")
-                        .replaceAll(Constants.myName, ""),
-                    chatRoomId:
-                        snapshot.data.documents[index].data()["chatRoomId"],
-                  );
-                })
+            ? Expanded(
+                child: ListView.builder(
+                    itemCount: snapshot.data.documents.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ChatRoomsTile(
+                        userName: snapshot.data.documents[index]
+                            .data()['chatRoomId']
+                            .toString()
+                            .replaceAll("_", "")
+                            .replaceAll(Constants.myName, ""),
+                        chatRoomId:
+                            snapshot.data.documents[index].data()["chatRoomId"],
+                      );
+                    }),
+              )
             : Container();
       },
     );
@@ -71,30 +74,34 @@ class _ChatRoomState extends State<ChatRoom> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Search()));
-            },
-          )
+      backgroundColor: HexColor('#1A1125'),
+      body: Stack(
+        children: [
+          CustomPaint(
+            size: Size(width, height),
+            painter: CurvePainter(),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.08),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                'CHAT',
+                style: TextStyle(
+                    letterSpacing: 1.3,
+                    fontSize: width * 0.08,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.1),
+            child: Container(
+              child: chatRoomsList(),
+            ),
+          ),
         ],
-        elevation: 0,
-        title: Text(
-          "Chat",
-          style: TextStyle(
-              fontSize: width * 0.1,
-              color: Colors.white,
-              fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: Container(
-        child: chatRoomsList(),
       ),
     );
   }
