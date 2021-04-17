@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'One_on_One_Chat/ChatRoom.dart';
 
 class TutorsList extends StatefulWidget {
@@ -141,6 +142,59 @@ class TutorCards extends StatefulWidget {
 }
 
 class TutorCardsState extends State<TutorCards> {
+
+  Razorpay _razorpay;
+
+  @override
+  void initState() {
+    super.initState();
+    _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _razorpay.clear();
+  }
+
+  void openCheckout() async {
+    var options = {
+      'key': 'rzp_test_RyfDbq015IzSkf',
+      'amount': 50000,
+      'name': 'ScholarAid',
+      'description': 'Payment',
+      'prefill': {'contact': '', 'email': 'test@razorpay.com'},
+      'external': {
+        'wallets': ['paytm']
+      }
+    };
+
+    try {
+      _razorpay.open(options);
+    } catch (e) {
+      debugPrint(e);
+    }
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    Fluttertoast.showToast(
+        msg: "SUCCESS: " + response.paymentId, timeInSecForIosWeb: 4);
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    Fluttertoast.showToast(
+        msg: "ERROR: " + response.code.toString() + " - " + response.message,
+        timeInSecForIosWeb: 4);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -223,7 +277,7 @@ class TutorCardsState extends State<TutorCards> {
                     height: 10,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: openCheckout,
                     child: Text(
                       "Pay",
                       style: TextStyle(
