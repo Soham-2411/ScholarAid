@@ -40,7 +40,7 @@ In this system of online education , kids from classes as low as kindergarden ha
 
 Presenting the third feature of the app - 'Flip N Focus'
 
-Parents and the tutors of the students will get a daily report with details like :- in screen time , in app time , time when phone is not used off etc via sms.
+Parents and the tutors of the students will get a daily report with details like :- in screen time , in app time , time when phone is not used off etc via sms. The number is being saved in the profile section of the app and when the student ends the sesssion in the phone , a sms will be received by the numbers that are saved with the details such as in screen time , in app time , time when phone is not used off etc.
 
 ### Virtual Connect
 Teachers and students need a platform to connect with each other. In this feature the student can pay for a private teacher (displayed in the app) to teach him concepts via video call/one on one chat. Payment can be done through normal cash or through Smartcoins which is a blockchain based payment system in our app.
