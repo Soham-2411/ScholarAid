@@ -32,7 +32,6 @@ class _AIState extends State<AI> {
       setState(() {
         summary = document.getElementsByTagName('h1')[0].innerHtml;
       });
-      print(summary);
       setState(() {
         status = 'sum';
       });
@@ -58,8 +57,6 @@ class _AIState extends State<AI> {
           answers.add('');
         }
       });
-      print(questions);
-      print(correct);
       setState(() {
         status = 'test';
       });
@@ -175,7 +172,8 @@ class _AIState extends State<AI> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  generateSummary(para);
+                                  if(para != '')
+                                    generateSummary(para);
                                 },
                               ),
                               SizedBox(height: 8),
@@ -190,7 +188,8 @@ class _AIState extends State<AI> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  generateQuestions(para);
+                                  if(para != '')
+                                    generateQuestions(para);
                                 },
                               ),
                             ],
@@ -257,6 +256,7 @@ class _AIState extends State<AI> {
                                 setState(() {
                                   status = 'para';
                                   summary = '';
+                                  para = '';
                                 });
                               },
                             ),
@@ -335,24 +335,47 @@ class _AIState extends State<AI> {
                           ),
                           Padding(
                             padding: EdgeInsets.all(16.0),
-                            child: ElevatedButton(
-                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color(0xff5B04BC)) ),
-                              child: Text(
-                                'Back',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 2
+                            child: Row(
+                              children: [
+                                ElevatedButton(
+                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color(0xff5B04BC)) ),
+                                  child: Text(
+                                    'Back',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      status = 'para';
+                                      para = '';
+                                      questions = [];
+                                      correct = [];
+                                      answers = [];
+                                    });
+                                  },
                                 ),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  status = 'para';
-                                  questions = [];
-                                  correct = [];
-                                  answers = [];
-                                });
-                              },
+                                SizedBox(width: 16),
+                                ElevatedButton(
+                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color(0xff5B04BC)) ),
+                                  child: Text(
+                                    'Marks',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    //users answer
+                                    print(answers);
+                                    //correct answer
+                                    print(correct);
+                                  },
+                                ),
+                              ],
                             ),
                           ),
                         ],
