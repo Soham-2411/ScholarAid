@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:all_sensors/all_sensors.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../main.dart';
+
 class CommSelectScreen extends StatefulWidget {
   @override
   _CommSelectScreenState createState() => _CommSelectScreenState();
@@ -37,6 +39,18 @@ class PhoneUsed extends StatefulWidget {
 }
 
 class _PhoneUsedState extends State<PhoneUsed> {
+  String CurrentDate = 'today';
+  @override
+  void initState() {
+    // TODO: implement initState
+    prefs.setInt(s, 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y);
+    y = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y;
+    x = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt();
+    setState(() {
+      _appTime=prefs.getInt(s);
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -110,8 +124,28 @@ class _PhoneUsedState extends State<PhoneUsed> {
                             Icons.calendar_today_outlined,
                             color: Colors.white,
                           ),
-                          onPressed: () {
-                            // CODE TO SELECT DATE ON WHICH PHONE WAS USED
+                          onPressed: () async {
+                            prefs.setInt(s, 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y);
+                            y = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt() - x + y;
+                            x = 60 * DateTime.now().hour.toInt() + DateTime.now().minute.toInt();
+                            //
+                            print(y);
+                            final DateTime picked = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2011),
+                                lastDate: DateTime(2031));
+                            if (picked != null) {
+                              print(picked.year.toString() +
+                                  '-' +
+                                  picked.month.toString() +
+                                  '-' +
+                                  picked.day.toString());
+                              setState(() {
+                                _appTime = prefs.getInt(picked.year.toString() + '-' + picked.month.toString() + '-' + picked.day.toString())??0;
+                                CurrentDate = picked.day.toString()+'-' + picked.month.toString()+'-'+picked.year.toString();
+                              });
+                            }
                           },
                         ),
                       ],
@@ -127,7 +161,7 @@ class _PhoneUsedState extends State<PhoneUsed> {
                       child: RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                              text: "App use for today: \n\n",
+                              text: "App use for ${CurrentDate}: \n\n",
                               style: TextStyle(
                                   fontSize: width * 0.06,
                                   fontWeight: FontWeight.w400,
