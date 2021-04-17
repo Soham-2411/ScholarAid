@@ -3,6 +3,24 @@
 
 <img src = "icon.jpeg" height=300>
 
+In these recent times (due the COVID 19), the whole system of education has been affected . With this new concept of ‘Online’ education which we are witnessing for the very first time, there’s bound to be challenges for both Students and Teachers. But now that online education has a vivid part of the system, it not’s going away anytime soon and so the solutions to the challenges of online education are of immense urgency. So, here we are presenting 'ScholarAid' for the rescue.
+
+ScholarAid aims to provide a very different approach to online studying. It will use concepts of Artificial Intelligence , Augmented Reality , Blockchain and many more technologies to bring a new way or approach to studying . ScholarAid is going to be an android mobile application made with the aim of getting students fall in love with studies - both theoretical and practical.
+
+## Features:
+
+### Paraqueries (AI algorithm)
+
+### Virtual World (Augmented Reality)
+
+### Flip N Focus
+
+### Virtual Connect
+
+### Other pages of our app such as Login, Sign up , Profile etc
+
+## Conclusion 
+
 ## Developers
 
 <table>
