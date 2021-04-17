@@ -40,6 +40,8 @@ dependencies:
   hexcolor:
   fab_circular_menu: ^1.0.2
   model_viewer:
+  all_sensors:
+  circular_countdown_timer:
   
 
   # The following adds the Cupertino Icons font to your application.
