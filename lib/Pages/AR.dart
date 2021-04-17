@@ -11,6 +11,7 @@ class ARModelDetails {
 }
 
 List<ARModelDetails> _arModelDetails = [
+  ARModelDetails('assets/Images/Bulb.png', 'https://storage.echoar.xyz/raspy-thunder-0385/3f21dcfe-0427-4eb0-bb89-60262ba3f935.glb', 'Electric Generator'),
   ARModelDetails('assets/Images/BLE.png', 'https://storage.echoar.xyz/raspy-thunder-0385/44faa8a4-09df-419f-9a24-5b9fa9fc6930.glb', 'Lab Equipment'),
   ARModelDetails('assets/Images/Lungs.png', 'https://storage.echoar.xyz/raspy-thunder-0385/f0eebfe3-8494-4171-bc9e-354b4bd6033e.glb', 'Lungs Expanded'),
   ARModelDetails('assets/Images/Heart.png', 'https://storage.echoar.xyz/raspy-thunder-0385/96d25b23-c8f8-4a08-a795-a1110cfd3981.glb', 'Heart'),
@@ -95,8 +96,7 @@ class _ARModelsState extends State<ARModels> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Models(
-                                src:
-                                'https://storage.echoar.xyz/raspy-thunder-0385/f0eebfe3-8494-4171-bc9e-354b4bd6033e.glb',
+                                src: _arModelDetails[index].link,
                               )));
                     },
                   ),
