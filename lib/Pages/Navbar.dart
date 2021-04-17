@@ -43,7 +43,7 @@ class _NavBarState extends State<NavBar> {
                           : (index == 2)
                               ? CommSelectScreen()
                               : (index == 3)
-                                  ? ChatRoom()
+                                  ? TutorsList()
                                   : ProfilePage())
             ],
           ),
