@@ -14,8 +14,9 @@ ScholarAid aims to provide a very different approach to online studying. It will
 ### ParaQueries (AI algorithm)
 <p float="left">
 <img src = "assets/Images/Sum_Q.jpg" height=300>
-<img src = "Ar2.jpg" height=300>
-<img src = "AR3.jpg" height=300>
+<img src = "assets/Images/Sum.jpg" height=300>
+<img src = "assets/Images/QA.jpg" height=300>
+<img src = "assets/Images/QA_marksheet.jpg" height=300>
 </p>
 
 Ever opened huge ppts and pdfs right before the exam and are clueless what and where to study from. We have got you sorted.
@@ -29,6 +30,11 @@ It is personalised Artificial Intelligence algorithm which will
 It is a feature that will help students reduce the immense workload of going through huge contexts of text and will thereby ease their studyload by making the portion to be studied concise and easy to learn and after that the question answer feature from that context will them grasp that concept very easily. It will be a time-saver for students who tend to keep everything for the last and also a great revision tool for them and is definitely a game changer.
 
 ### Virtual World (Augmented Reality)
+<p float="left">
+<img src = "assets/Images/AR1.jpg" height=300>
+<img src = "assets/Images/AR2.jpg" height=300>
+<img src = "assets/Images/Ar3.jpg" height=300>
+</p>
 
 Ever felt online classes cannot give you a good practical experience and are only theory centered. Well we have got you covered.
 Presenting our second feature 'Virtual World'.
@@ -40,6 +46,10 @@ So, ScholarAid will incorporate 3D models and animations to give students a LIVE
 (We could only make a single animated 3D model in blender of a simple Physics exp. due to time constraints and rest are imported and static)
 
 ### Flip N Focus
+<p float="left">
+<img src = "assets/Images/Flip1.jpg" height=300>
+<img src = "assets/Images/Flip2.jpg" height=300>
+</p>
 
 In this system of online education , kids from classes as low as kindergarden has to be provided with electronic devices and working parents have no way of knowing how much time their child is using phone , using our app to study or just playing around with other apps in the mobile. Well we have got you covered.
 
@@ -48,11 +58,25 @@ Presenting the third feature of the app - 'Flip N Focus'
 Parents and the tutors of the students will get a daily report with details like :- in screen time , in app time , time when phone is not used off etc via sms. The number is being saved in the profile section of the app and when the student ends the sesssion in the phone , a sms will be received by the numbers that are saved with the details such as in screen time , in app time , time when phone is not used off etc.
 
 ### Virtual Connect
+<p float="left">
+<img src = "assets/Images/List.jpg" height=300>
+<img src = "assets/Images/chat.jpg" height=300>
+<img src = "assets/Images/chat1.jpg" height=300>
+<img src = "assets/Images/video.jpg" height=300>
+</p>
+
 Teachers and students need a platform to connect with each other. In this feature the student can pay for a private teacher (displayed in the app) to teach him concepts via video call/one on one chat. Payment can be done through normal cash or through Smartcoins which is a blockchain based payment system in our app.
 
 Student and teachers need to have one on one interaction daily and hence this feature of connecting people with one on one chat and video conferencing will help interact with others much better. Private tutors can earn while students can learn at the same time hence showing the buisness side of the application.
 
 ### Other pages of our app such as Login, Sign up , Profile etc
+<p float="left">
+<img src = "assets/Images/Starter.jpg" height=300>
+<img src = "assets/Images/Login.jpg" height=300>
+<img src = "assets/Images/Profile.jpg" height=300>
+<img src = "assets/Images/Pay1.jpg" height=300>
+<img src = "assets/Images/Pay2.jpg" height=300>
+</p>
 
 ## Conclusion 
 
