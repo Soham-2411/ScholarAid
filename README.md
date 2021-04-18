@@ -71,7 +71,7 @@ Parents and the tutors of the students will get a daily report with details like
 <img src = "assets/Images/video.jpg" height=300>
 </p>
 
-Teachers and students need a platform to connect with each other. In this feature the student can pay for a private teacher (displayed in the app) to teach him concepts via video call/one on one chat. Payment can be done through normal cash or through Smartcoins which is a blockchain based payment system in our app.
+Teachers and students need a platform to connect with each other. In this feature the student can pay for a private teacher (displayed in the app) to teach him concepts via video call/one on one chat. Payment can be done through online razorpay based payment system in our app.
 
 Student and teachers need to have one on one interaction daily and hence this feature of connecting people with one on one chat and video conferencing will help interact with others much better. Private tutors can earn while students can learn at the same time hence showing the buisness side of the application.
 
